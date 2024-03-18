@@ -76,10 +76,11 @@ HAVING COUNT(*) > 1;
 -- Quetions --
 # 1) Retrieve the total number of cereals in the dataset
 SELECT COUNT(DISTINCT cereals_name) AS Total_Number_of_cereals FROM cereals;
+-- Answer: There are 77 cereals in the dataset --
 
 # 2) Find the distinct manufacturers ('mfr') present in the dataset
 SELECT COUNT(DISTINCT manufacturer) AS count FROM cereals;
--- 7 manufacturers --
+-- Answer: 7 manufacturers --
 
 # 3) Calculate the total number of cereals for each manufacturer.
 SELECT manufacturer,
@@ -87,10 +88,11 @@ SELECT manufacturer,
 FROM cereals
 GROUP BY manufacturer
 ORDER BY count DESC;
+-- Answer: Kelloggs has 23 cereals followed by General Mills with 22 --
 
 # 4) Average ratings
 SELECT ROUND(AVG(rating),2) AS average_rating FROM cereals;
--- 42.67 --
+-- Answer: 42.67 --
 
 # 5) top 3 cereals by highest ratings?
 SELECT cereals_name,
@@ -99,7 +101,7 @@ FROM cereals
 GROUP BY cereals_name
 ORDER BY highest_rating DESC
 LIMIT 3;
-
+-- Answer: All Bran has the highest rating at 93.70 --
 
 # 6) Cereal with  calories lesser than the average calories
 SELECT 
@@ -120,6 +122,8 @@ FROM cereals
 GROUP BY cereals_name
 ORDER BY low_sugar ASC
 LIMIT 5;
+-- Answer: Quaker Oatmeal has the lowest sugar content at -1 --
+
 
 SELECT cereals_name,
        MAX(sugars) AS high_sugar
@@ -127,7 +131,7 @@ FROM cereals
 GROUP BY cereals_name
 ORDER BY high_sugar DESC
 LIMIT 5;
-
+-- Answer: Golden Crisp and Smacks have the highest sugar at 15 --
 
 # 8)) Top 5 most nutritious cereal
 WITH NutritionalValues AS (
@@ -140,12 +144,12 @@ WITH NutritionalValues AS (
 )
 
 SELECT
-    cereals_name,
+    cereals_name, manufacturer,
     protein,
     fiber,
     sugars,
     vitamins,
-    (nv.max_protein * protein + nv.max_fiber * fiber + nv.min_sugar * sugars + vitamins) AS nutritional_score
+    ROUND((nv.max_protein * protein + nv.max_fiber * fiber + nv.min_sugar * sugars + vitamins),0) AS nutritional_score
 FROM
     cereals
 CROSS JOIN
@@ -153,7 +157,7 @@ CROSS JOIN
 ORDER BY
     nutritional_score DESC
 LIMIT 5;
-
+-- Answer: All Bran with extra fiber from Kelloggs is the most nutritious with a nutritional score of 245
 
 # 9) Least nutritious cereal
 WITH LeastNutritious AS (
@@ -172,6 +176,7 @@ SELECT cereals_name, sugars, sodium, vitamins, protein, nutrient_rank
 FROM LeastNutritious 
 ORDER BY nutrient_rank
 LIMIT 5;
+-- Answer: Smacks is ranked as the least nutritious
 
 
 #  10) Find cereals with calories greater than 100g, carbohydrate of higher than the average and display shelf of 2 
@@ -202,6 +207,8 @@ WHERE fiber > 4
     WHERE c2.sugars > 10
       AND c2.cereals_name = c1.cereals_name
   );
+-- Answer: Fruitful Bran, Post Nat. Raisin Bran and Raisin Bran
+
 
 # 13) Calculate the percentage of cereals on each shelf, grouped by manufacturer type
 SELECT  manufacturer, 
@@ -212,11 +219,10 @@ FROM cereals
 GROUP BY manufacturer, shelf
 ORDER BY manufacturer, shelf;
 
+
 # 14) Distribution of type
 SELECT type,
        COUNT(type) AS count
 FROM cereals
 GROUP BY type;
-
-#Majority of cereals are of type Cold.
-#Most of cereals are made by General Mills and Kellogs.
+-- Answer: Majority of cereals are of type Cold.
