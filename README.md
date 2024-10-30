@@ -7,15 +7,17 @@ The BigMart Sales Data offers a comprehensive snapshot of retail operations, enc
 * My primary goal of this analysis is to identify key metrics that shed light on various aspects of retail performance. Through the application of SQL, employing aggregation techniques, Common Table Expressions (CTE), and window functions, I aim to distill actionable insights that can inform strategic decision-making.
 - For the SQL script click [Here](https://github.com/Mayreeobi/CognoRise-Infotech-Internship/blob/main/bigmart.sql)
 
-## Project 2: TOUR AND TRAVEL CUSTOMER CHURN ANALYSIS USING Microsoft Power BI 
+## Project 2: TOUR AND TRAVEL CUSTOMER CHURN ANALYSIS Using Tableau 
 Understanding customer churn dynamics is crucial for effective business strategies. The Power BI analysis provides a comprehensive view of customer churn, facilitating strategic decision-making for enhanced customer retention in the travel and tour industry.
+
 #### Key Objectives:
 * Identify and quantify the number of lost customers.
 * Calculate the churn rate for business impact assessment.
-* Design and implement an interactive Power BI dashboard. that provides actionable insights and recommendations to enhance customer retention strategies.
+* Design and implement an interactive dashboard. that provides actionable insights and recommendations to enhance customer retention strategies.
 - Dashboard snippet: [Here](https://github.com/Mayreeobi/CognoRise-Infotech-Internship/blob/main/Churn_analysis.png)
 - Interactive dashboard [Here](https://public.tableau.com/views/ChurnAnalysis_17302938038440/Dashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
-- 
+
+  
 ### Findings:
 * Overall Churn: Out of 954 customers, the churn rate stands at 23.5%, with a total of 224 customers lost.
 * Age Distribution and Churn: Ages 27 and 28 show the highest churn, with age 27 peaking at a churn rate of 56.5%. While Age 38 has the lowest number of churned customers, with only 3 churning. 
